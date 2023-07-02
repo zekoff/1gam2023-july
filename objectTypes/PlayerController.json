@@ -1,0 +1,94 @@
+{
+	"name": "PlayerController",
+	"plugin-id": "Sprite",
+	"sid": 225949136982117,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "score",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 754571219818685
+		},
+		{
+			"name": "upgradeLevel",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 779143700319218
+		},
+		{
+			"name": "perks",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 916053857427758
+		},
+		{
+			"name": "uidControlledShip",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 114539892941481
+		},
+		{
+			"name": "inputBits",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 487568162904151
+		},
+		{
+			"name": "singlePlayerMode",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 714597261998964
+		},
+		{
+			"name": "shipType",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 557136921393704
+		},
+		{
+			"name": "peerId",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 161105953418990
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 250,
+						"height": 250,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 527391,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 231444812404435,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

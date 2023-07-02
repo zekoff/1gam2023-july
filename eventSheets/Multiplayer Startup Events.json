@@ -1,0 +1,116 @@
+{
+	"name": "Multiplayer Startup Events",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-signal",
+					"objectClass": "System",
+					"sid": 245392497243203,
+					"parameters": {
+						"tag": "\"start-multiplayer\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "connect",
+					"objectClass": "Multiplayer",
+					"sid": 224958438047921,
+					"parameters": {
+						"server": "\"wss://multiplayer.scirra.com\""
+					}
+				},
+				{
+					"id": "set-boolean-instvar",
+					"objectClass": "PlayerController",
+					"sid": 912402435945694,
+					"parameters": {
+						"instance-variable": "singlePlayerMode",
+						"value": "false"
+					}
+				}
+			],
+			"sid": 619567260060338
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-connected",
+					"objectClass": "Multiplayer",
+					"sid": 455107176419847
+				}
+			],
+			"actions": [
+				{
+					"id": "log-in",
+					"objectClass": "Multiplayer",
+					"sid": 259376720992953,
+					"parameters": {
+						"alias": "\"PLAYER\""
+					}
+				}
+			],
+			"sid": 767276462524038
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-logged-in",
+					"objectClass": "Multiplayer",
+					"sid": 740486288096634
+				}
+			],
+			"actions": [
+				{
+					"id": "auto-join-room",
+					"objectClass": "Multiplayer",
+					"sid": 698213552234677,
+					"parameters": {
+						"game": "\"zekoff-1gam2023-july\"",
+						"instance": "\"default\"",
+						"first-room": "\"\"",
+						"max-peers": "2",
+						"locking": "lock-when-full"
+					}
+				}
+			],
+			"sid": 276571834768718
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-joined-room",
+					"objectClass": "Multiplayer",
+					"sid": 383555700516392
+				}
+			],
+			"actions": [
+				{
+					"id": "associate-object-with-peer",
+					"objectClass": "Multiplayer",
+					"sid": 330099913412679,
+					"parameters": {
+						"object": "PlayerController",
+						"peer-id": "Multiplayer.MyID"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "PlayerController",
+					"sid": 885527280941306,
+					"parameters": {
+						"instance-variable": "peerId",
+						"value": "Multiplayer.MyID"
+					}
+				}
+			],
+			"sid": 312920258909566
+		}
+	],
+	"sid": 526462627559355
+}
