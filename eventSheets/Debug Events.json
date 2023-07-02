@@ -1,0 +1,106 @@
+{
+	"name": "Debug Events",
+	"events": [
+		{
+			"functionName": "AddDebugMessage",
+			"functionDescription": "Add a debug message to the log on the debug layer.",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "message",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 773564511516263
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "push",
+					"objectClass": "DebugMessages",
+					"sid": 786363003269448,
+					"parameters": {
+						"where": "front",
+						"value": "message",
+						"axis": "x"
+					}
+				}
+			],
+			"sid": 466023097568158,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-size",
+							"objectClass": "DebugMessages",
+							"sid": 577774309466736,
+							"parameters": {
+								"axis": "x",
+								"comparison": 4,
+								"value": "20"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "pop",
+							"objectClass": "DebugMessages",
+							"sid": 561481994003326,
+							"parameters": {
+								"where": "back",
+								"axis": "x"
+							}
+						}
+					],
+					"sid": 789674507976467
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "DebugText",
+							"sid": 358295573119711,
+							"parameters": {
+								"text": "\"\""
+							}
+						}
+					],
+					"sid": 941921965939257
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each-element",
+							"objectClass": "DebugMessages",
+							"sid": 462514884462520,
+							"parameters": {
+								"axes": "x"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "append-text",
+							"objectClass": "DebugText",
+							"sid": 424471868588614,
+							"parameters": {
+								"text": "DebugMessages.CurValue & newline"
+							}
+						}
+					],
+					"sid": 630337586589144
+				}
+			]
+		}
+	],
+	"sid": 367206822859468
+}

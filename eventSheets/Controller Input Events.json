@@ -17,12 +17,10 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "PlayerController",
-							"sid": 890543878252721,
-							"parameters": {
-								"instance-variable": "singlePlayerMode"
-							}
+							"id": "is-logged-in",
+							"objectClass": "Multiplayer",
+							"sid": 578463974787155,
+							"isInverted": true
 						}
 					],
 					"actions": [
@@ -491,12 +489,10 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "PlayerController",
-							"sid": 490292442192500,
-							"parameters": {
-								"instance-variable": "singlePlayerMode"
-							}
+							"id": "is-logged-in",
+							"objectClass": "Multiplayer",
+							"sid": 275889528745805,
+							"isInverted": true
 						}
 					],
 					"actions": [

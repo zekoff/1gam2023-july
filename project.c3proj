@@ -8,6 +8,13 @@
 	"usedAddons": [
 		{
 			"type": "plugin",
+			"id": "Arr",
+			"name": "Array",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Keyboard",
 			"name": "Keyboard",
 			"author": "Scirra",
@@ -24,6 +31,13 @@
 			"type": "plugin",
 			"id": "Sprite",
 			"name": "Sprite",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Text",
+			"name": "Text",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -65,6 +79,14 @@
 				],
 				"subfolders": [],
 				"name": "Control Objects"
+			},
+			{
+				"items": [
+					"DebugText",
+					"DebugMessages"
+				],
+				"subfolders": [],
+				"name": "Debug Objects"
 			}
 		]
 	},
@@ -85,7 +107,8 @@
 		"items": [
 			"Main Gameplay Events",
 			"Controller Input Events",
-			"Multiplayer Startup Events"
+			"Multiplayer Startup Events",
+			"Debug Events"
 		],
 		"subfolders": []
 	},

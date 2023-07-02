@@ -140,30 +140,6 @@
 				}
 			],
 			"sid": 749709025268921
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-key-pressed",
-					"objectClass": "Keyboard",
-					"sid": 254956176837368,
-					"parameters": {
-						"key": 77
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "signal",
-					"objectClass": "System",
-					"sid": 122604384110944,
-					"parameters": {
-						"tag": "\"start-multiplayer\""
-					}
-				}
-			],
-			"sid": 997183404051489
 		}
 	],
 	"sid": 111151355255525

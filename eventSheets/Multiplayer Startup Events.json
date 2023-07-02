@@ -5,6 +5,37 @@
 			"eventType": "block",
 			"conditions": [
 				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 584505116233423,
+					"parameters": {
+						"key": 77
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "signal",
+					"objectClass": "System",
+					"sid": 298916970840613,
+					"parameters": {
+						"tag": "\"start-multiplayer\""
+					}
+				},
+				{
+					"callFunction": "AddDebugMessage",
+					"sid": 492432644458948,
+					"parameters": [
+						"\"Starting multiplayer mode\""
+					]
+				}
+			],
+			"sid": 809130123891448
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
 					"id": "on-signal",
 					"objectClass": "System",
 					"sid": 245392497243203,
@@ -23,12 +54,51 @@
 					}
 				},
 				{
-					"id": "set-boolean-instvar",
-					"objectClass": "PlayerController",
-					"sid": 912402435945694,
+					"id": "sync-object",
+					"objectClass": "Multiplayer",
+					"sid": 439159902834740,
 					"parameters": {
-						"instance-variable": "singlePlayerMode",
-						"value": "false"
+						"object": "PlayerController",
+						"data": "position-only",
+						"precision": "normal-float-4-bytes",
+						"bandwidth": "normal-bandwidth-unpredictable"
+					}
+				},
+				{
+					"id": "sync-instance-variable",
+					"objectClass": "Multiplayer",
+					"sid": 963394394433663,
+					"disabled": true,
+					"parameters": {
+						"object": "PlayerController",
+						"instance-variable": {
+							"name": "inputBits",
+							"objectClass": "PlayerController"
+						},
+						"precision": "very-low-uint8-1-byte",
+						"interpolation": "none",
+						"client-value-tag": "\"\""
+					}
+				},
+				{
+					"id": "sync-object",
+					"objectClass": "Multiplayer",
+					"sid": 639336095760782,
+					"parameters": {
+						"object": "PlayerShip",
+						"data": "position-and-angle",
+						"precision": "normal-float-4-bytes",
+						"bandwidth": "normal-bandwidth-unpredictable"
+					}
+				},
+				{
+					"id": "add-client-input-value",
+					"objectClass": "Multiplayer",
+					"sid": 612618854393052,
+					"parameters": {
+						"tag": "\"input\"",
+						"precision": "very-low-uint8-1-byte",
+						"interpolation": "none"
 					}
 				}
 			],
@@ -66,13 +136,54 @@
 			],
 			"actions": [
 				{
+					"callFunction": "AddDebugMessage",
+					"sid": 252634385038348,
+					"parameters": [
+						"\"Logged in to signaling server.\""
+					]
+				},
+				{
+					"callFunction": "AddDebugMessage",
+					"sid": 440781718038499,
+					"parameters": [
+						"\"Peer ID: \" & Multiplayer.MyID"
+					]
+				},
+				{
+					"callFunction": "AddDebugMessage",
+					"sid": 801295598621551,
+					"parameters": [
+						"\"Alias: \" & Multiplayer.MyAlias"
+					]
+				},
+				{
+					"id": "associate-object-with-peer",
+					"objectClass": "Multiplayer",
+					"sid": 585553201848735,
+					"disabled": true,
+					"parameters": {
+						"object": "PlayerController",
+						"peer-id": "Multiplayer.MyID"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "PlayerController",
+					"sid": 751767648463175,
+					"disabled": true,
+					"parameters": {
+						"instance-variable": "peerId",
+						"value": "Multiplayer.MyID"
+					}
+				},
+				{
 					"id": "auto-join-room",
 					"objectClass": "Multiplayer",
-					"sid": 698213552234677,
+					"sid": 552877280955417,
 					"parameters": {
 						"game": "\"zekoff-1gam2023-july\"",
 						"instance": "\"default\"",
-						"first-room": "\"\"",
+						"first-room": "\"initial-room\"",
 						"max-peers": "2",
 						"locking": "lock-when-full"
 					}
@@ -89,27 +200,212 @@
 					"sid": 383555700516392
 				}
 			],
-			"actions": [
+			"actions": [],
+			"sid": 312920258909566,
+			"children": [
 				{
-					"id": "associate-object-with-peer",
-					"objectClass": "Multiplayer",
-					"sid": 330099913412679,
-					"parameters": {
-						"object": "PlayerController",
-						"peer-id": "Multiplayer.MyID"
-					}
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-host",
+							"objectClass": "Multiplayer",
+							"sid": 738187786450483
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "AddDebugMessage",
+							"sid": 392119993357074,
+							"parameters": [
+								"\"Joined as host\""
+							]
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "PlayerController",
+							"sid": 361776168354470,
+							"parameters": {
+								"instance-variable": "peerId",
+								"value": "Multiplayer.MyID"
+							}
+						},
+						{
+							"id": "associate-object-with-peer",
+							"objectClass": "Multiplayer",
+							"sid": 667924843150787,
+							"parameters": {
+								"object": "PlayerController",
+								"peer-id": "Multiplayer.MyID"
+							}
+						}
+					],
+					"sid": 974490199840915
 				},
 				{
-					"id": "set-instvar-value",
-					"objectClass": "PlayerController",
-					"sid": 885527280941306,
-					"parameters": {
-						"instance-variable": "peerId",
-						"value": "Multiplayer.MyID"
-					}
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 177786266257387
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "AddDebugMessage",
+							"sid": 624830328688483,
+							"parameters": [
+								"\"Joined as peer\""
+							]
+						},
+						{
+							"id": "destroy",
+							"objectClass": "PlayerController",
+							"sid": 661726866720969
+						}
+					],
+					"sid": 803742517823264
+				}
+			]
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Peer",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-created",
+							"objectClass": "PlayerController",
+							"sid": 347237110926449
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "PlayerController",
+							"sid": 203258957759679,
+							"parameters": {
+								"instance-variable": "peerId",
+								"value": "Multiplayer.PeerID"
+							}
+						},
+						{
+							"id": "associate-object-with-peer",
+							"objectClass": "Multiplayer",
+							"sid": 350476815572984,
+							"parameters": {
+								"object": "PlayerController",
+								"peer-id": "Multiplayer.PeerID"
+							}
+						}
+					],
+					"sid": 273589431230060
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-client-update",
+							"objectClass": "Multiplayer",
+							"sid": 890693767087770
+						}
+					],
+					"actions": [
+						{
+							"id": "set-client-state",
+							"objectClass": "Multiplayer",
+							"sid": 258666335799984,
+							"parameters": {
+								"tag": "\"input\"",
+								"value": "PlayerController.inputBits"
+							}
+						}
+					],
+					"sid": 833777305179666
 				}
 			],
-			"sid": 312920258909566
+			"sid": 314405887567385
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Host",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-peer-connected",
+							"objectClass": "Multiplayer",
+							"sid": 789747002971039
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 869893985531469,
+							"parameters": {
+								"object-to-create": "PlayerController",
+								"layer": "0",
+								"x": "500",
+								"y": "500",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "PlayerController",
+							"sid": 439405318780456,
+							"parameters": {
+								"instance-variable": "peerId",
+								"value": "Multiplayer.PeerID"
+							}
+						},
+						{
+							"id": "associate-object-with-peer",
+							"objectClass": "Multiplayer",
+							"sid": 647635718367885,
+							"parameters": {
+								"object": "PlayerController",
+								"peer-id": "Multiplayer.PeerID"
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 525629183640000,
+							"parameters": {
+								"object-to-create": "PlayerShip",
+								"layer": "0",
+								"x": "500",
+								"y": "500",
+								"create-hierarchy": false,
+								"template-name": "\"Eagle\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "PlayerController",
+							"sid": 846256656148317,
+							"parameters": {
+								"instance-variable": "uidControlledShip",
+								"value": "PlayerShip.UID"
+							}
+						}
+					],
+					"sid": 555412073839930
+				}
+			],
+			"sid": 511287576818926
 		}
 	],
 	"sid": 526462627559355

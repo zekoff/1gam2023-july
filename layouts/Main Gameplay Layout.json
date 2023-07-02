@@ -22,9 +22,8 @@
 						"perks": "",
 						"uidControlledShip": 0,
 						"inputBits": 0,
-						"singlePlayerMode": true,
-						"shipType": "Falcon",
-						"peerId": ""
+						"peerId": "",
+						"shipType": "Falcon"
 					},
 					"behaviors": {},
 					"world": {
@@ -75,7 +74,18 @@
 		}
 	],
 	"sid": 226470214040671,
-	"nonworld-instances": [],
+	"nonworld-instances": [
+		{
+			"type": "DebugMessages",
+			"properties": {
+				"width": 0,
+				"height": 1,
+				"depth": 1
+			},
+			"uid": 13,
+			"instanceVariables": {}
+		}
+	],
 	"effectTypes": [],
 	"width": 2560,
 	"height": 1440,

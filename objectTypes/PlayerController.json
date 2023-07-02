@@ -40,25 +40,18 @@
 			"sid": 487568162904151
 		},
 		{
-			"name": "singlePlayerMode",
-			"type": "boolean",
+			"name": "peerId",
+			"type": "string",
 			"desc": "",
 			"show": true,
-			"sid": 714597261998964
+			"sid": 161105953418990
 		},
 		{
 			"name": "shipType",
 			"type": "string",
 			"desc": "",
 			"show": true,
-			"sid": 557136921393704
-		},
-		{
-			"name": "peerId",
-			"type": "string",
-			"desc": "",
-			"show": true,
-			"sid": 161105953418990
+			"sid": 492818834407905
 		}
 	],
 	"behaviorTypes": [],
