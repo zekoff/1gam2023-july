@@ -11,6 +11,14 @@
 					"parameters": {
 						"key": 77
 					}
+				},
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 328883367218715,
+					"parameters": {
+						"object": "PlayerController"
+					}
 				}
 			],
 			"actions": [
@@ -30,7 +38,8 @@
 					]
 				}
 			],
-			"sid": 809130123891448
+			"sid": 809130123891448,
+			"isOrBlock": true
 		},
 		{
 			"eventType": "block",
@@ -67,6 +76,21 @@
 				{
 					"id": "sync-instance-variable",
 					"objectClass": "Multiplayer",
+					"sid": 350452905512164,
+					"parameters": {
+						"object": "PlayerController",
+						"instance-variable": {
+							"name": "uidControlledShip",
+							"objectClass": "PlayerController"
+						},
+						"precision": "normal-float-4-bytes",
+						"interpolation": "none",
+						"client-value-tag": "\"\""
+					}
+				},
+				{
+					"id": "sync-instance-variable",
+					"objectClass": "Multiplayer",
 					"sid": 963394394433663,
 					"disabled": true,
 					"parameters": {
@@ -94,9 +118,9 @@
 				{
 					"id": "add-client-input-value",
 					"objectClass": "Multiplayer",
-					"sid": 612618854393052,
+					"sid": 358983191729607,
 					"parameters": {
-						"tag": "\"input\"",
+						"tag": "\"inputBits\"",
 						"precision": "very-low-uint8-1-byte",
 						"interpolation": "none"
 					}
@@ -155,26 +179,6 @@
 					"parameters": [
 						"\"Alias: \" & Multiplayer.MyAlias"
 					]
-				},
-				{
-					"id": "associate-object-with-peer",
-					"objectClass": "Multiplayer",
-					"sid": 585553201848735,
-					"disabled": true,
-					"parameters": {
-						"object": "PlayerController",
-						"peer-id": "Multiplayer.MyID"
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "PlayerController",
-					"sid": 751767648463175,
-					"disabled": true,
-					"parameters": {
-						"instance-variable": "peerId",
-						"value": "Multiplayer.MyID"
-					}
 				},
 				{
 					"id": "auto-join-room",
@@ -237,6 +241,15 @@
 								"object": "PlayerController",
 								"peer-id": "Multiplayer.MyID"
 							}
+						},
+						{
+							"id": "set-group-active",
+							"objectClass": "System",
+							"sid": 962719732322177,
+							"parameters": {
+								"group-name": "\"Host\"",
+								"state": "activated"
+							}
 						}
 					],
 					"sid": 974490199840915
@@ -262,6 +275,15 @@
 							"id": "destroy",
 							"objectClass": "PlayerController",
 							"sid": 661726866720969
+						},
+						{
+							"id": "set-group-active",
+							"objectClass": "System",
+							"sid": 732577994832028,
+							"parameters": {
+								"group-name": "\"Peer\"",
+								"state": "activated"
+							}
 						}
 					],
 					"sid": 803742517823264
@@ -273,7 +295,7 @@
 			"disabled": false,
 			"title": "Peer",
 			"description": "",
-			"isActiveOnStart": true,
+			"isActiveOnStart": false,
 			"children": [
 				{
 					"eventType": "block",
@@ -304,7 +326,26 @@
 							}
 						}
 					],
-					"sid": 273589431230060
+					"sid": 273589431230060,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerController",
+									"sid": 320242624644586,
+									"parameters": {
+										"instance-variable": "peerId",
+										"comparison": 0,
+										"value": "Multiplayer.MyID"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 907752059820459
+						}
+					]
 				},
 				{
 					"eventType": "block",
@@ -313,15 +354,32 @@
 							"id": "on-client-update",
 							"objectClass": "Multiplayer",
 							"sid": 890693767087770
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "PlayerController",
+							"sid": 101731115784932,
+							"parameters": {
+								"instance-variable": "peerId",
+								"comparison": 0,
+								"value": "Multiplayer.MyID"
+							}
 						}
 					],
 					"actions": [
 						{
+							"callFunction": "AddDebugMessage",
+							"sid": 543199668568309,
+							"parameters": [
+								"\"Input bits: \" & PlayerController.inputBits"
+							]
+						},
+						{
 							"id": "set-client-state",
 							"objectClass": "Multiplayer",
-							"sid": 258666335799984,
+							"sid": 855938989431766,
 							"parameters": {
-								"tag": "\"input\"",
+								"tag": "\"inputBits\"",
 								"value": "PlayerController.inputBits"
 							}
 						}
@@ -336,7 +394,7 @@
 			"disabled": false,
 			"title": "Host",
 			"description": "",
-			"isActiveOnStart": true,
+			"isActiveOnStart": false,
 			"children": [
 				{
 					"eventType": "block",
