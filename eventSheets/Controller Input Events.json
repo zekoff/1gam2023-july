@@ -26,7 +26,7 @@
 					"actions": [
 						{
 							"id": "set-instvar-value",
-							"objectClass": "PlayerController",
+							"objectClass": "PlayerShip",
 							"sid": 353290960805616,
 							"parameters": {
 								"instance-variable": "inputBits",
@@ -46,7 +46,7 @@
 						},
 						{
 							"id": "compare-instance-variable",
-							"objectClass": "PlayerController",
+							"objectClass": "PlayerShip",
 							"sid": 425993170178569,
 							"parameters": {
 								"instance-variable": "peerId",
@@ -58,7 +58,7 @@
 					"actions": [
 						{
 							"id": "set-instvar-value",
-							"objectClass": "PlayerController",
+							"objectClass": "PlayerShip",
 							"sid": 138179107650346,
 							"parameters": {
 								"instance-variable": "inputBits",
@@ -498,7 +498,7 @@
 					"actions": [
 						{
 							"id": "set-instvar-value",
-							"objectClass": "PlayerController",
+							"objectClass": "PlayerShip",
 							"sid": 374605046945640,
 							"parameters": {
 								"instance-variable": "inputBits",
@@ -518,7 +518,7 @@
 						},
 						{
 							"id": "compare-instance-variable",
-							"objectClass": "PlayerController",
+							"objectClass": "PlayerShip",
 							"sid": 863336496964985,
 							"parameters": {
 								"instance-variable": "peerId",
@@ -530,7 +530,7 @@
 					"actions": [
 						{
 							"id": "set-instvar-value",
-							"objectClass": "PlayerController",
+							"objectClass": "PlayerShip",
 							"sid": 230214430026746,
 							"parameters": {
 								"instance-variable": "inputBits",

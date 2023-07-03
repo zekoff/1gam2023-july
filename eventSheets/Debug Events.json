@@ -100,6 +100,36 @@
 					"sid": 630337586589144
 				}
 			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 505795127569293,
+					"parameters": {
+						"object": "PlayerShip"
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "AddDebugMessage",
+					"sid": 868889270773435,
+					"parameters": [
+						"\"Associated peer ID: \" & PlayerShip.peerId"
+					]
+				},
+				{
+					"callFunction": "AddDebugMessage",
+					"sid": 688118709750958,
+					"parameters": [
+						"\"UID of this ship: \" & PlayerShip.UID"
+					]
+				}
+			],
+			"sid": 604496663355639
 		}
 	],
 	"sid": 367206822859468

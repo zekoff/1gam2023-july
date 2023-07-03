@@ -22,7 +22,11 @@
 						"shotSpread": 0,
 						"shotCooldown": 0.2,
 						"shotActive": false,
-						"shotTimer": 0
+						"shotTimer": 0,
+						"peerId": "",
+						"score": 0,
+						"upgradeLevel": 1,
+						"inputBits": 0
 					},
 					"behaviors": {
 						"8Direction": {
@@ -97,6 +101,22 @@
 											},
 											{
 												"iv": "shotTimer",
+												"state": true
+											},
+											{
+												"iv": "peerId",
+												"state": true
+											},
+											{
+												"iv": "score",
+												"state": true
+											},
+											{
+												"iv": "upgradeLevel",
+												"state": true
+											},
+											{
+												"iv": "inputBits",
 												"state": true
 											}
 										]
@@ -271,7 +291,11 @@
 						"shotSpread": 0,
 						"shotCooldown": 0.2,
 						"shotActive": false,
-						"shotTimer": 0
+						"shotTimer": 0,
+						"peerId": "",
+						"score": 0,
+						"upgradeLevel": 1,
+						"inputBits": 0
 					},
 					"behaviors": {
 						"8Direction": {
@@ -346,6 +370,22 @@
 											},
 											{
 												"iv": "shotTimer",
+												"state": true
+											},
+											{
+												"iv": "peerId",
+												"state": true
+											},
+											{
+												"iv": "score",
+												"state": true
+											},
+											{
+												"iv": "upgradeLevel",
+												"state": true
+											},
+											{
+												"iv": "inputBits",
 												"state": true
 											}
 										]
@@ -520,7 +560,11 @@
 						"shotSpread": 0,
 						"shotCooldown": 0.2,
 						"shotActive": false,
-						"shotTimer": 0
+						"shotTimer": 0,
+						"peerId": "",
+						"score": 0,
+						"upgradeLevel": 1,
+						"inputBits": 0
 					},
 					"behaviors": {
 						"8Direction": {
@@ -595,6 +639,22 @@
 											},
 											{
 												"iv": "shotTimer",
+												"state": true
+											},
+											{
+												"iv": "peerId",
+												"state": true
+											},
+											{
+												"iv": "score",
+												"state": true
+											},
+											{
+												"iv": "upgradeLevel",
+												"state": true
+											},
+											{
+												"iv": "inputBits",
 												"state": true
 											}
 										]
@@ -769,7 +829,11 @@
 						"shotSpread": 0,
 						"shotCooldown": 0.2,
 						"shotActive": false,
-						"shotTimer": 0
+						"shotTimer": 0,
+						"peerId": "",
+						"score": 0,
+						"upgradeLevel": 1,
+						"inputBits": 0
 					},
 					"behaviors": {
 						"8Direction": {
@@ -844,6 +908,22 @@
 											},
 											{
 												"iv": "shotTimer",
+												"state": true
+											},
+											{
+												"iv": "peerId",
+												"state": true
+											},
+											{
+												"iv": "score",
+												"state": true
+											},
+											{
+												"iv": "upgradeLevel",
+												"state": true
+											},
+											{
+												"iv": "inputBits",
 												"state": true
 											}
 										]
@@ -999,43 +1079,6 @@
 							1
 						],
 						"angle": 4.71238898038469,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "PlayerController",
-					"properties": {
-						"initially-visible": true,
-						"initial-animation": "Animation 1",
-						"initial-frame": 0,
-						"enable-collisions": true,
-						"live-preview": false
-					},
-					"uid": 11,
-					"instanceVariables": {
-						"score": 0,
-						"upgradeLevel": 1,
-						"perks": "",
-						"uidControlledShip": 4,
-						"inputBits": 0,
-						"peerId": "",
-						"shipType": "Falcon"
-					},
-					"behaviors": {},
-					"world": {
-						"x": 154,
-						"y": 102,
-						"width": 99.33277404764249,
-						"height": 99.33277404764249,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
 						"zElevation": 0
 					}
 				},

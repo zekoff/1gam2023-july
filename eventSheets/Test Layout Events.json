@@ -1,0 +1,10 @@
+{
+	"name": "Test Layout Events",
+	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "Main Gameplay Events"
+		}
+	],
+	"sid": 121209982366886
+}

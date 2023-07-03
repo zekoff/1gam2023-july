@@ -81,7 +81,6 @@
 	"objectTypes": {
 		"items": [
 			"PlayerShip",
-			"PlayerController",
 			"Multiplayer",
 			"PlayerStandardBullet",
 			"PlayerHomingBullet"
@@ -118,7 +117,8 @@
 	"layouts": {
 		"items": [
 			"Main Gameplay Layout",
-			"Config Layout"
+			"Config Layout",
+			"Test Layout"
 		],
 		"subfolders": []
 	},
@@ -127,7 +127,8 @@
 			"Main Gameplay Events",
 			"Controller Input Events",
 			"Multiplayer Startup Events",
-			"Debug Events"
+			"Debug Events",
+			"Test Layout Events"
 		],
 		"subfolders": []
 	},
@@ -284,5 +285,5 @@
 	},
 	"viewportWidth": 1280,
 	"viewportHeight": 720,
-	"firstLayout": null
+	"firstLayout": "Test Layout"
 }
