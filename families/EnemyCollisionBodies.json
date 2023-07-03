@@ -1,0 +1,19 @@
+{
+	"name": "EnemyCollisionBodies",
+	"plugin-id": "Sprite",
+	"sid": 990804149175356,
+	"instanceVariables": [
+		{
+			"name": "health",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 328417663768282
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"EnemyShip"
+	]
+}

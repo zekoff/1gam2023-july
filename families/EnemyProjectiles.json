@@ -1,0 +1,17 @@
+{
+	"name": "EnemyProjectiles",
+	"plugin-id": "Sprite",
+	"sid": 691388536577584,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "destroy",
+			"name": "DestroyOutsideLayout",
+			"sid": 850723748589496
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"EnemyStandardBullet"
+	]
+}

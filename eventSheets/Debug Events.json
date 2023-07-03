@@ -130,6 +130,30 @@
 				}
 			],
 			"sid": 604496663355639
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 298851529272583,
+					"parameters": {
+						"object": "MultiplayerButton"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "signal",
+					"objectClass": "System",
+					"sid": 906484518991787,
+					"parameters": {
+						"tag": "\"start-multiplayer\""
+					}
+				}
+			],
+			"sid": 642804882184391
 		}
 	],
 	"sid": 367206822859468

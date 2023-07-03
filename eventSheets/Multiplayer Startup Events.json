@@ -28,6 +28,15 @@
 					"parameters": [
 						"\"Starting multiplayer mode\""
 					]
+				},
+				{
+					"id": "set-group-active",
+					"objectClass": "System",
+					"sid": 431283431436404,
+					"parameters": {
+						"group-name": "\"Simulation Host\"",
+						"state": "deactivated"
+					}
 				}
 			],
 			"sid": 809130123891448,
@@ -57,11 +66,11 @@
 				{
 					"id": "sync-object",
 					"objectClass": "Multiplayer",
-					"sid": 639336095760782,
+					"sid": 688058552943830,
 					"parameters": {
 						"object": "PlayerShip",
 						"data": "position-and-angle",
-						"precision": "normal-float-4-bytes",
+						"precision": "low-int16-2-bytes",
 						"bandwidth": "normal-bandwidth-unpredictable"
 					}
 				},
@@ -78,9 +87,43 @@
 				{
 					"id": "sync-object",
 					"objectClass": "Multiplayer",
-					"sid": 787154217341796,
+					"sid": 474835874655033,
 					"parameters": {
 						"object": "PlayerStandardBullet",
+						"data": "position-and-angle",
+						"precision": "low-int16-2-bytes",
+						"bandwidth": "low-bandwidth-highly-predictable"
+					}
+				},
+				{
+					"id": "sync-object",
+					"objectClass": "Multiplayer",
+					"sid": 570410753931298,
+					"parameters": {
+						"object": "EnemyShip",
+						"data": "position-and-angle",
+						"precision": "low-int16-2-bytes",
+						"bandwidth": "normal-bandwidth-unpredictable"
+					}
+				},
+				{
+					"id": "sync-object",
+					"objectClass": "Multiplayer",
+					"sid": 822585054528410,
+					"parameters": {
+						"object": "EnemyStandardBullet",
+						"data": "position-and-angle",
+						"precision": "low-int16-2-bytes",
+						"bandwidth": "low-bandwidth-highly-predictable"
+					}
+				},
+				{
+					"id": "sync-object",
+					"objectClass": "Multiplayer",
+					"sid": 873743470043794,
+					"disabled": true,
+					"parameters": {
+						"object": "ExplosionParticle",
 						"data": "position-and-angle",
 						"precision": "normal-float-4-bytes",
 						"bandwidth": "normal-bandwidth-unpredictable"
@@ -160,6 +203,149 @@
 			"eventType": "block",
 			"conditions": [
 				{
+					"id": "on-error",
+					"objectClass": "Multiplayer",
+					"sid": 921286554662217
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "AddDebugMessage",
+					"sid": 978666307050806,
+					"parameters": [
+						"\"[b]Multiplayer error: \" & Multiplayer.ErrorMessage & \"[/b]\""
+					]
+				}
+			],
+			"sid": 103727385601494
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-disconnected",
+					"objectClass": "Multiplayer",
+					"sid": 172017275285829
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "AddDebugMessage",
+					"sid": 687447654986570,
+					"parameters": [
+						"\"[b]Disconnected[/b]\""
+					]
+				}
+			],
+			"sid": 404229586832409
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-left-room",
+					"objectClass": "Multiplayer",
+					"sid": 223132968826719
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "AddDebugMessage",
+					"sid": 488000808380005,
+					"parameters": [
+						"\"Left room\""
+					]
+				}
+			],
+			"sid": 706918579885965
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-kicked",
+					"objectClass": "Multiplayer",
+					"sid": 741802094062323
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "AddDebugMessage",
+					"sid": 575469057447905,
+					"parameters": [
+						"\"Kicked\""
+					]
+				}
+			],
+			"sid": 796513361704076
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-host-disconnected",
+					"objectClass": "Multiplayer",
+					"sid": 724390698146356
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "AddDebugMessage",
+					"sid": 683699924039046,
+					"parameters": [
+						"\"Host disconnected\""
+					]
+				}
+			],
+			"sid": 847165060067561
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-peer-disconnected",
+					"objectClass": "Multiplayer",
+					"sid": 712391996207021
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "AddDebugMessage",
+					"sid": 145701752092832,
+					"parameters": [
+						"\"Peer disconnected\""
+					]
+				}
+			],
+			"sid": 486348081193610
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 587206629419060,
+					"parameters": {
+						"interval-seconds": "3"
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "AddDebugMessage",
+					"sid": 255069713165888,
+					"parameters": [
+						"\"Inbound bandwidth: \" & Multiplayer.StatInboundBandwidth & newline &\n\"Outbound bandwidth: \" & Multiplayer.StatOutboundBandwidth & newline &\n\"Ping: \" & round(Multiplayer.PeerLatency(Multiplayer.HostID)) & newline &\n\"Inbound count: \" & Multiplayer.StatInboundCount & newline &\n\"Outboud count: \" & Multiplayer.StatOutboundCount"
+					]
+				}
+			],
+			"sid": 718092473211758
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
 					"id": "on-joined-room",
 					"objectClass": "Multiplayer",
 					"sid": 383555700516392
@@ -206,9 +392,9 @@
 						{
 							"id": "set-group-active",
 							"objectClass": "System",
-							"sid": 962719732322177,
+							"sid": 899785372860562,
 							"parameters": {
-								"group-name": "\"Host\"",
+								"group-name": "\"Simulation Host\"",
 								"state": "activated"
 							}
 						}
@@ -238,6 +424,11 @@
 							"sid": 274178345732748
 						},
 						{
+							"id": "destroy",
+							"objectClass": "EnemyShip",
+							"sid": 552511890155616
+						},
+						{
 							"id": "set-group-active",
 							"objectClass": "System",
 							"sid": 732577994832028,
@@ -250,6 +441,55 @@
 					"sid": 803742517823264
 				}
 			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-peer-connected",
+					"objectClass": "Multiplayer",
+					"sid": 232884675609816
+				},
+				{
+					"id": "is-host",
+					"objectClass": "Multiplayer",
+					"sid": 730572179120958
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 292012660794229,
+					"parameters": {
+						"object-to-create": "PlayerShip",
+						"layer": "0",
+						"x": "500",
+						"y": "500",
+						"create-hierarchy": false,
+						"template-name": "\"Falcon\""
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "PlayerShip",
+					"sid": 186367793058797,
+					"parameters": {
+						"instance-variable": "peerId",
+						"value": "Multiplayer.PeerID"
+					}
+				},
+				{
+					"id": "associate-object-with-peer",
+					"objectClass": "Multiplayer",
+					"sid": 533995879567141,
+					"parameters": {
+						"object": "PlayerShip",
+						"peer-id": "Multiplayer.PeerID"
+					}
+				}
+			],
+			"sid": 786283168229150
 		},
 		{
 			"eventType": "group",
@@ -369,9 +609,10 @@
 						},
 						{
 							"callFunction": "AddDebugMessage",
-							"sid": 653742203046352,
+							"sid": 885859124344557,
+							"disabled": true,
 							"parameters": [
-								"\"Sending input bits: \" & PlayerShip.inputBits"
+								"\"Peer inputs: \" & PlayerShip.inputBits"
 							]
 						}
 					],
@@ -379,60 +620,6 @@
 				}
 			],
 			"sid": 314405887567385
-		},
-		{
-			"eventType": "group",
-			"disabled": false,
-			"title": "Host",
-			"description": "",
-			"isActiveOnStart": false,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-peer-connected",
-							"objectClass": "Multiplayer",
-							"sid": 789747002971039
-						}
-					],
-					"actions": [
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 175654393913664,
-							"parameters": {
-								"object-to-create": "PlayerShip",
-								"layer": "0",
-								"x": "500",
-								"y": "500",
-								"create-hierarchy": false,
-								"template-name": "\"Falcon\""
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "PlayerShip",
-							"sid": 385752920848180,
-							"parameters": {
-								"instance-variable": "peerId",
-								"value": "Multiplayer.PeerID"
-							}
-						},
-						{
-							"id": "associate-object-with-peer",
-							"objectClass": "Multiplayer",
-							"sid": 608300275338489,
-							"parameters": {
-								"object": "PlayerShip",
-								"peer-id": "Multiplayer.PeerID"
-							}
-						}
-					],
-					"sid": 555412073839930
-				}
-			],
-			"sid": 511287576818926
 		}
 	],
 	"sid": 526462627559355

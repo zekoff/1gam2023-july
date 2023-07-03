@@ -1,0 +1,63 @@
+{
+	"name": "EnemyHomingBullet",
+	"plugin-id": "Sprite",
+	"sid": 420443268047990,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Rotate",
+			"name": "Rotate",
+			"sid": 221665263688465
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 16,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 7530257,
+						"collisionPoly": {
+							"points": [
+								0.5625,
+								0.0625,
+								0.6875,
+								0.0625,
+								0.9375,
+								0.5625,
+								0.9375,
+								0.6875,
+								0.4375,
+								0.9375,
+								0.3125,
+								0.9375,
+								0.0625,
+								0.4375,
+								0.0625,
+								0.3125
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 477241515978502,
+				"name": "Animation 2",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}
