@@ -1,0 +1,26 @@
+{
+	"name": "PlayerProjectiles",
+	"plugin-id": "Sprite",
+	"sid": 700859022590751,
+	"instanceVariables": [
+		{
+			"name": "power",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 547604576386666
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "destroy",
+			"name": "DestroyOutsideLayout",
+			"sid": 762972371716878
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"PlayerStandardBullet",
+		"PlayerHomingBullet"
+	]
+}

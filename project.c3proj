@@ -57,8 +57,22 @@
 		},
 		{
 			"type": "behavior",
+			"id": "Bullet",
+			"name": "Bullet",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "EightDir",
 			"name": "8 Direction",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "destroy",
+			"name": "Destroy outside layout",
 			"author": "Scirra",
 			"bundled": false
 		}
@@ -68,7 +82,9 @@
 		"items": [
 			"PlayerShip",
 			"PlayerController",
-			"Multiplayer"
+			"Multiplayer",
+			"PlayerStandardBullet",
+			"PlayerHomingBullet"
 		],
 		"subfolders": [
 			{
@@ -93,7 +109,10 @@
 	"autosaveData": null,
 	"containers": [],
 	"families": {
-		"items": [],
+		"items": [
+			"PlayerCollisionBodies",
+			"PlayerProjectiles"
+		],
 		"subfolders": []
 	},
 	"layouts": {

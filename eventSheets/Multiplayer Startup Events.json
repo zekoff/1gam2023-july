@@ -89,22 +89,6 @@
 					}
 				},
 				{
-					"id": "sync-instance-variable",
-					"objectClass": "Multiplayer",
-					"sid": 963394394433663,
-					"disabled": true,
-					"parameters": {
-						"object": "PlayerController",
-						"instance-variable": {
-							"name": "inputBits",
-							"objectClass": "PlayerController"
-						},
-						"precision": "very-low-uint8-1-byte",
-						"interpolation": "none",
-						"client-value-tag": "\"\""
-					}
-				},
-				{
 					"id": "sync-object",
 					"objectClass": "Multiplayer",
 					"sid": 639336095760782,
@@ -124,9 +108,48 @@
 						"precision": "very-low-uint8-1-byte",
 						"interpolation": "none"
 					}
+				},
+				{
+					"id": "sync-object",
+					"objectClass": "Multiplayer",
+					"sid": 787154217341796,
+					"parameters": {
+						"object": "PlayerStandardBullet",
+						"data": "position-and-angle",
+						"precision": "normal-float-4-bytes",
+						"bandwidth": "normal-bandwidth-unpredictable"
+					}
 				}
 			],
-			"sid": 619567260060338
+			"sid": 619567260060338,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "TODO: shouldn't be needed if not on config layout."
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "PlayerShip",
+							"sid": 119245419268685,
+							"parameters": {
+								"unique-id": "PlayerController.uidControlledShip"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "PlayerShip",
+							"sid": 615820099285218
+						}
+					],
+					"sid": 693412426805590
+				}
+			]
 		},
 		{
 			"eventType": "block",
@@ -234,15 +257,6 @@
 							}
 						},
 						{
-							"id": "associate-object-with-peer",
-							"objectClass": "Multiplayer",
-							"sid": 667924843150787,
-							"parameters": {
-								"object": "PlayerController",
-								"peer-id": "Multiplayer.MyID"
-							}
-						},
-						{
 							"id": "set-group-active",
 							"objectClass": "System",
 							"sid": 962719732322177,
@@ -275,6 +289,11 @@
 							"id": "destroy",
 							"objectClass": "PlayerController",
 							"sid": 661726866720969
+						},
+						{
+							"id": "destroy",
+							"objectClass": "PlayerShip",
+							"sid": 274178345732748
 						},
 						{
 							"id": "set-group-active",
@@ -310,42 +329,14 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "PlayerController",
-							"sid": 203258957759679,
+							"sid": 513810687739596,
 							"parameters": {
 								"instance-variable": "peerId",
 								"value": "Multiplayer.PeerID"
 							}
-						},
-						{
-							"id": "associate-object-with-peer",
-							"objectClass": "Multiplayer",
-							"sid": 350476815572984,
-							"parameters": {
-								"object": "PlayerController",
-								"peer-id": "Multiplayer.PeerID"
-							}
 						}
 					],
-					"sid": 273589431230060,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "PlayerController",
-									"sid": 320242624644586,
-									"parameters": {
-										"instance-variable": "peerId",
-										"comparison": 0,
-										"value": "Multiplayer.MyID"
-									}
-								}
-							],
-							"actions": [],
-							"sid": 907752059820459
-						}
-					]
+					"sid": 273589431230060
 				},
 				{
 					"eventType": "block",
@@ -367,13 +358,6 @@
 						}
 					],
 					"actions": [
-						{
-							"callFunction": "AddDebugMessage",
-							"sid": 543199668568309,
-							"parameters": [
-								"\"Input bits: \" & PlayerController.inputBits"
-							]
-						},
 						{
 							"id": "set-client-state",
 							"objectClass": "Multiplayer",
@@ -429,25 +413,16 @@
 							}
 						},
 						{
-							"id": "associate-object-with-peer",
-							"objectClass": "Multiplayer",
-							"sid": 647635718367885,
-							"parameters": {
-								"object": "PlayerController",
-								"peer-id": "Multiplayer.PeerID"
-							}
-						},
-						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 525629183640000,
+							"sid": 175654393913664,
 							"parameters": {
 								"object-to-create": "PlayerShip",
 								"layer": "0",
 								"x": "500",
 								"y": "500",
 								"create-hierarchy": false,
-								"template-name": "\"Eagle\""
+								"template-name": "\"Falcon\""
 							}
 						},
 						{
@@ -458,6 +433,13 @@
 								"instance-variable": "uidControlledShip",
 								"value": "PlayerShip.UID"
 							}
+						},
+						{
+							"callFunction": "AddDebugMessage",
+							"sid": 843606576314077,
+							"parameters": [
+								"\"Peer controlled ship UID: \" & PlayerController.uidControlledShip"
+							]
 						}
 					],
 					"sid": 555412073839930

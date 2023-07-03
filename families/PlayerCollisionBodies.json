@@ -1,0 +1,19 @@
+{
+	"name": "PlayerCollisionBodies",
+	"plugin-id": "Sprite",
+	"sid": 470887013936322,
+	"instanceVariables": [
+		{
+			"name": "health",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 252178333415483
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"PlayerShip"
+	]
+}

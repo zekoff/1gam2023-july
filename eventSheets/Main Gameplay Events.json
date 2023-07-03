@@ -10,8 +10,17 @@
 			"includeSheet": "Multiplayer Startup Events"
 		},
 		{
+			"eventType": "comment",
+			"text": "Set peer inputBits to last received multiplayer input state."
+		},
+		{
 			"eventType": "block",
 			"conditions": [
+				{
+					"id": "is-in-room",
+					"objectClass": "Multiplayer",
+					"sid": 889535213478357
+				},
 				{
 					"id": "compare-instance-variable",
 					"objectClass": "PlayerController",
@@ -38,15 +47,22 @@
 			"sid": 632698435670119
 		},
 		{
+			"eventType": "comment",
+			"text": "Directional movement (single-player or host)."
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "for-each",
-					"objectClass": "System",
-					"sid": 919185483981629,
-					"parameters": {
-						"object": "PlayerController"
-					}
+					"id": "is-logged-in",
+					"objectClass": "Multiplayer",
+					"sid": 133056462948320,
+					"isInverted": true
+				},
+				{
+					"id": "is-host",
+					"objectClass": "Multiplayer",
+					"sid": 659878829150491
 				}
 			],
 			"actions": [],
@@ -56,135 +72,380 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "evaluate-expression",
+							"id": "for-each",
 							"objectClass": "System",
-							"sid": 739667698410921,
+							"sid": 810549943529572,
 							"parameters": {
-								"value": "getbit(PlayerController.inputBits, 0)"
+								"object": "PlayerController"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 797834418541292,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "evaluate-expression",
+									"objectClass": "System",
+									"sid": 233692810595462,
+									"parameters": {
+										"value": "getbit(PlayerController.inputBits, 0)"
+									}
+								},
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "PlayerShip",
+									"sid": 909079503216070,
+									"parameters": {
+										"unique-id": "PlayerController.uidControlledShip"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "PlayerShip",
+									"sid": 678088442174349,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "up"
+									}
+								}
+							],
+							"sid": 443650857323155
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "evaluate-expression",
+									"objectClass": "System",
+									"sid": 810460740402303,
+									"parameters": {
+										"value": "getbit(PlayerController.inputBits, 1)"
+									}
+								},
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "PlayerShip",
+									"sid": 569084747130712,
+									"parameters": {
+										"unique-id": "PlayerController.uidControlledShip"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "PlayerShip",
+									"sid": 976493092077087,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "down"
+									}
+								}
+							],
+							"sid": 272734814679057
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "evaluate-expression",
+									"objectClass": "System",
+									"sid": 724802714962399,
+									"parameters": {
+										"value": "getbit(PlayerController.inputBits, 2)"
+									}
+								},
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "PlayerShip",
+									"sid": 321439224086070,
+									"parameters": {
+										"unique-id": "PlayerController.uidControlledShip"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "PlayerShip",
+									"sid": 844301406793664,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "left"
+									}
+								}
+							],
+							"sid": 176289225165644
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "evaluate-expression",
+									"objectClass": "System",
+									"sid": 819143988230063,
+									"parameters": {
+										"value": "getbit(PlayerController.inputBits, 3)"
+									}
+								},
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "PlayerShip",
+									"sid": 956953852526269,
+									"parameters": {
+										"unique-id": "PlayerController.uidControlledShip"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "PlayerShip",
+									"sid": 598581222366022,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "right"
+									}
+								}
+							],
+							"sid": 525437141230892
+						}
+					]
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "comment",
+			"text": "Shoot standard bullets."
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-logged-in",
+					"objectClass": "Multiplayer",
+					"sid": 153008707026750,
+					"isInverted": true
+				},
+				{
+					"id": "is-host",
+					"objectClass": "Multiplayer",
+					"sid": 568685268012558
+				}
+			],
+			"actions": [
+				{
+					"id": "subtract-from-instvar",
+					"objectClass": "PlayerShip",
+					"sid": 960575002732562,
+					"parameters": {
+						"instance-variable": "shotTimer",
+						"value": "dt"
+					}
+				}
+			],
+			"sid": 270026180285775,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 356872015476483,
+							"parameters": {
+								"object": "PlayerShip"
 							}
 						},
 						{
-							"id": "pick-by-unique-id",
+							"id": "while",
+							"objectClass": "System",
+							"sid": 977624819096084
+						},
+						{
+							"id": "compare-instance-variable",
 							"objectClass": "PlayerShip",
-							"sid": 245403563683690,
+							"sid": 891946977529542,
 							"parameters": {
-								"unique-id": "PlayerController.uidControlledShip"
+								"instance-variable": "shotTimer",
+								"comparison": 3,
+								"value": "0"
 							}
 						}
 					],
 					"actions": [
 						{
-							"id": "simulate-control",
+							"customAction": "Shoot",
 							"objectClass": "PlayerShip",
-							"sid": 546107706738641,
-							"behaviorType": "8Direction",
-							"parameters": {
-								"control": "up"
-							}
+							"sid": 526900103285449
 						}
 					],
-					"sid": 978815332044792
+					"sid": 927310278822237
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"aceType": "action",
+			"aceName": "Shoot",
+			"objectClass": "PlayerShip",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "add-to-instvar",
+					"objectClass": "PlayerShip",
+					"sid": 899003951190074,
+					"parameters": {
+						"instance-variable": "shotTimer",
+						"value": "Self.shotCooldown"
+					}
+				}
+			],
+			"sid": 269939029179755,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "The offsets are applied to bullet spawn parameters to create a fan effect, based on the ship's shots per burst and spread attributes."
+				},
+				{
+					"eventType": "variable",
+					"name": "xOffset",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 796951713964139
+				},
+				{
+					"eventType": "variable",
+					"name": "yOffset",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 496715666846810
+				},
+				{
+					"eventType": "variable",
+					"name": "angleOffset",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 871720135006195
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "evaluate-expression",
+							"id": "repeat",
 							"objectClass": "System",
-							"sid": 164604382757824,
+							"sid": 882632740256133,
 							"parameters": {
-								"value": "getbit(PlayerController.inputBits, 1)"
-							}
-						},
-						{
-							"id": "pick-by-unique-id",
-							"objectClass": "PlayerShip",
-							"sid": 422394468018364,
-							"parameters": {
-								"unique-id": "PlayerController.uidControlledShip"
+								"count": "PlayerShip.shotsPerBurst"
 							}
 						}
 					],
 					"actions": [
 						{
-							"id": "simulate-control",
-							"objectClass": "PlayerShip",
-							"sid": 960857000904693,
-							"behaviorType": "8Direction",
-							"parameters": {
-								"control": "down"
-							}
-						}
-					],
-					"sid": 841160595257258
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "evaluate-expression",
+							"id": "set-eventvar-value",
 							"objectClass": "System",
-							"sid": 152479162863991,
+							"sid": 433724407720540,
 							"parameters": {
-								"value": "getbit(PlayerController.inputBits, 2)"
+								"variable": "xOffset",
+								"value": "(loopindex - ((PlayerShip.shotsPerBurst - 1) / 2)) * 10"
 							}
 						},
 						{
-							"id": "pick-by-unique-id",
-							"objectClass": "PlayerShip",
-							"sid": 457559724008501,
-							"parameters": {
-								"unique-id": "PlayerController.uidControlledShip"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "simulate-control",
-							"objectClass": "PlayerShip",
-							"sid": 556438212650539,
-							"behaviorType": "8Direction",
-							"parameters": {
-								"control": "left"
-							}
-						}
-					],
-					"sid": 511320489997430
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "evaluate-expression",
+							"id": "set-eventvar-value",
 							"objectClass": "System",
-							"sid": 727839932496981,
+							"sid": 201372865667818,
 							"parameters": {
-								"value": "getbit(PlayerController.inputBits, 3)"
+								"variable": "yOffset",
+								"value": "abs((loopindex - ((PlayerShip.shotsPerBurst - 1) / 2))) * 5"
 							}
 						},
 						{
-							"id": "pick-by-unique-id",
-							"objectClass": "PlayerShip",
-							"sid": 565208406410304,
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 546474702606349,
 							"parameters": {
-								"unique-id": "PlayerController.uidControlledShip"
+								"variable": "angleOffset",
+								"value": "(loopindex - ((PlayerShip.shotsPerBurst - 1) / 2)) * ( PlayerShip.shotSpread / 2)"
 							}
-						}
-					],
-					"actions": [
+						},
 						{
-							"id": "simulate-control",
-							"objectClass": "PlayerShip",
-							"sid": 249221596355835,
-							"behaviorType": "8Direction",
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 155758527015027,
 							"parameters": {
-								"control": "right"
+								"object-to-create": "PlayerStandardBullet",
+								"layer": "0",
+								"x": "PlayerShip.X + xOffset",
+								"y": "PlayerShip.Y + yOffset",
+								"create-hierarchy": false,
+								"template-name": "\"Standard\""
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "PlayerStandardBullet",
+							"sid": 659880777259006,
+							"parameters": {
+								"angle": "270 + angleOffset"
+							}
+						},
+						{
+							"id": "set-angle-of-motion",
+							"objectClass": "PlayerStandardBullet",
+							"sid": 347487588845940,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"angle": "270 + angleOffset"
 							}
 						}
 					],
-					"sid": 943696282821580
+					"sid": 750199069177633
 				}
 			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 662461991020749
+				}
+			],
+			"actions": [
+				{
+					"id": "set-boolean-instvar",
+					"objectClass": "PlayerShip",
+					"sid": 681848872025244,
+					"parameters": {
+						"instance-variable": "shotActive",
+						"value": "true"
+					}
+				}
+			],
+			"sid": 523025482574980
 		}
 	],
 	"sid": 111151355255525
