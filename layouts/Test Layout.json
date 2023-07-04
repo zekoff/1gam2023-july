@@ -24,10 +24,7 @@
 						"shotCooldown": 0.2,
 						"shotActive": false,
 						"shotTimer": 0,
-						"peerId": "",
-						"score": 0,
-						"upgradeLevel": 1,
-						"inputBits": 0
+						"shipType": "Falcon"
 					},
 					"behaviors": {
 						"Flash": {
@@ -112,19 +109,7 @@
 												"state": true
 											},
 											{
-												"iv": "peerId",
-												"state": true
-											},
-											{
-												"iv": "score",
-												"state": true
-											},
-											{
-												"iv": "upgradeLevel",
-												"state": true
-											},
-											{
-												"iv": "inputBits",
+												"iv": "shipType",
 												"state": true
 											}
 										]

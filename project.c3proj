@@ -147,7 +147,8 @@
 			"Main Gameplay Events",
 			"Control Input Events",
 			"Debug Events",
-			"Test Layout Events"
+			"Test Layout Events",
+			"Constants"
 		],
 		"subfolders": []
 	},

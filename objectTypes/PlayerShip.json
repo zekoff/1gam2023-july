@@ -40,32 +40,11 @@
 			"sid": 590950960723432
 		},
 		{
-			"name": "peerId",
+			"name": "shipType",
 			"type": "string",
 			"desc": "",
 			"show": true,
-			"sid": 144811763010264
-		},
-		{
-			"name": "score",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 956839238774625
-		},
-		{
-			"name": "upgradeLevel",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 954952614077343
-		},
-		{
-			"name": "inputBits",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 810279207504682
+			"sid": 380531561050324
 		}
 	],
 	"behaviorTypes": [

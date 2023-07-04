@@ -14,140 +14,6 @@
 			"text": "Directional movement (single-player or host)."
 		},
 		{
-			"aceType": "action",
-			"aceName": "Shoot",
-			"objectClass": "PlayerShip",
-			"functionDescription": "",
-			"functionCategory": "",
-			"functionReturnType": "none",
-			"functionCopyPicked": false,
-			"functionIsAsync": false,
-			"functionParameters": [],
-			"eventType": "custom-ace-block",
-			"conditions": [],
-			"actions": [
-				{
-					"id": "add-to-instvar",
-					"objectClass": "PlayerShip",
-					"sid": 899003951190074,
-					"parameters": {
-						"instance-variable": "shotTimer",
-						"value": "Self.shotCooldown"
-					}
-				}
-			],
-			"sid": 269939029179755,
-			"children": [
-				{
-					"eventType": "comment",
-					"text": "The offsets are applied to bullet spawn parameters to create a fan effect, based on the ship's shots per burst and spread attributes."
-				},
-				{
-					"eventType": "variable",
-					"name": "xOffset",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": false,
-					"sid": 796951713964139
-				},
-				{
-					"eventType": "variable",
-					"name": "yOffset",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": false,
-					"sid": 496715666846810
-				},
-				{
-					"eventType": "variable",
-					"name": "angleOffset",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": false,
-					"sid": 871720135006195
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "repeat",
-							"objectClass": "System",
-							"sid": 882632740256133,
-							"parameters": {
-								"count": "PlayerShip.shotsPerBurst"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 433724407720540,
-							"parameters": {
-								"variable": "xOffset",
-								"value": "(loopindex - ((PlayerShip.shotsPerBurst - 1) / 2)) * 10"
-							}
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 201372865667818,
-							"parameters": {
-								"variable": "yOffset",
-								"value": "abs((loopindex - ((PlayerShip.shotsPerBurst - 1) / 2))) * 5"
-							}
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 546474702606349,
-							"parameters": {
-								"variable": "angleOffset",
-								"value": "(loopindex - ((PlayerShip.shotsPerBurst - 1) / 2)) * ( PlayerShip.shotSpread / 2)"
-							}
-						},
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 155758527015027,
-							"parameters": {
-								"object-to-create": "PlayerStandardBullet",
-								"layer": "0",
-								"x": "PlayerShip.X + xOffset",
-								"y": "PlayerShip.Y + yOffset",
-								"create-hierarchy": false,
-								"template-name": "\"Standard\""
-							}
-						},
-						{
-							"id": "set-angle",
-							"objectClass": "PlayerStandardBullet",
-							"sid": 659880777259006,
-							"parameters": {
-								"angle": "270 + angleOffset"
-							}
-						},
-						{
-							"id": "set-angle-of-motion",
-							"objectClass": "PlayerStandardBullet",
-							"sid": 347487588845940,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"angle": "270 + angleOffset"
-							}
-						}
-					],
-					"sid": 750199069177633
-				}
-			]
-		},
-		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -243,70 +109,6 @@
 				}
 			],
 			"sid": 344372679417955
-		},
-		{
-			"eventType": "comment",
-			"text": "Shoot standard bullets."
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "every-tick",
-					"objectClass": "System",
-					"sid": 247782730297436
-				}
-			],
-			"actions": [
-				{
-					"id": "subtract-from-instvar",
-					"objectClass": "PlayerShip",
-					"sid": 539855280181403,
-					"parameters": {
-						"instance-variable": "shotTimer",
-						"value": "PlayerShip.dt"
-					}
-				}
-			],
-			"sid": 301865085759453,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "for-each",
-							"objectClass": "System",
-							"sid": 109027680600094,
-							"parameters": {
-								"object": "PlayerShip"
-							}
-						},
-						{
-							"id": "while",
-							"objectClass": "System",
-							"sid": 548537730683608
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "PlayerShip",
-							"sid": 395316633306856,
-							"parameters": {
-								"instance-variable": "shotTimer",
-								"comparison": 3,
-								"value": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"customAction": "Shoot",
-							"objectClass": "PlayerShip",
-							"sid": 784230260819123
-						}
-					],
-					"sid": 882912670948259
-				}
-			]
 		},
 		{
 			"eventType": "block",
@@ -522,6 +324,350 @@
 				}
 			],
 			"sid": 943971836504947
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Player Ship Events and Actions",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Shoot standard bullets."
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-tick",
+							"objectClass": "System",
+							"sid": 335979480578717
+						}
+					],
+					"actions": [
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "PlayerShip",
+							"sid": 424535003779243,
+							"parameters": {
+								"instance-variable": "shotTimer",
+								"value": "PlayerShip.dt"
+							}
+						}
+					],
+					"sid": 554069886610179,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 806417931952339,
+									"parameters": {
+										"object": "PlayerShip"
+									}
+								},
+								{
+									"id": "while",
+									"objectClass": "System",
+									"sid": 884072527007289
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerShip",
+									"sid": 652412722744018,
+									"parameters": {
+										"instance-variable": "shotTimer",
+										"comparison": 3,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"customAction": "Shoot",
+									"objectClass": "PlayerShip",
+									"sid": 604014355918659
+								}
+							],
+							"sid": 844096581638101
+						}
+					]
+				},
+				{
+					"aceType": "action",
+					"aceName": "Shoot",
+					"objectClass": "PlayerShip",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "custom-ace-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "add-to-instvar",
+							"objectClass": "PlayerShip",
+							"sid": 546142586757455,
+							"parameters": {
+								"instance-variable": "shotTimer",
+								"value": "Self.shotCooldown"
+							}
+						}
+					],
+					"sid": 321012772171728,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "The offsets are applied to bullet spawn parameters to create a fan effect, based on the ship's shots per burst and spread attributes."
+						},
+						{
+							"eventType": "variable",
+							"name": "xOffset",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 119835379389039
+						},
+						{
+							"eventType": "variable",
+							"name": "yOffset",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 178374937172088
+						},
+						{
+							"eventType": "variable",
+							"name": "angleOffset",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 155796746747086
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "repeat",
+									"objectClass": "System",
+									"sid": 807917249236861,
+									"parameters": {
+										"count": "PlayerShip.shotsPerBurst"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 525868709336718,
+									"parameters": {
+										"variable": "xOffset",
+										"value": "(loopindex - ((PlayerShip.shotsPerBurst - 1) / 2)) * 10"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 692356723408395,
+									"parameters": {
+										"variable": "yOffset",
+										"value": "abs((loopindex - ((PlayerShip.shotsPerBurst - 1) / 2))) * 5"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 499486679584800,
+									"parameters": {
+										"variable": "angleOffset",
+										"value": "(loopindex - ((PlayerShip.shotsPerBurst - 1) / 2)) * ( PlayerShip.shotSpread / 2)"
+									}
+								},
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 412864524286156,
+									"parameters": {
+										"object-to-create": "PlayerStandardBullet",
+										"layer": "0",
+										"x": "PlayerShip.X + xOffset",
+										"y": "PlayerShip.Y + yOffset",
+										"create-hierarchy": false,
+										"template-name": "\"Standard\""
+									}
+								},
+								{
+									"id": "set-angle",
+									"objectClass": "PlayerStandardBullet",
+									"sid": 671332506213224,
+									"parameters": {
+										"angle": "270 + angleOffset"
+									}
+								},
+								{
+									"id": "set-angle-of-motion",
+									"objectClass": "PlayerStandardBullet",
+									"sid": 844044345972430,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"angle": "270 + angleOffset"
+									}
+								}
+							],
+							"sid": 168519414315561
+						}
+					]
+				},
+				{
+					"aceType": "action",
+					"aceName": "Ability1",
+					"objectClass": "PlayerShip",
+					"functionDescription": "Activate special ability #1 based on player ship type.",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "custom-ace-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 961047752011212,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerShip",
+									"sid": 204934557930586,
+									"parameters": {
+										"instance-variable": "shipType",
+										"comparison": 0,
+										"value": "FALCON"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 254400802318737,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "PlayerShip",
+											"sid": 833588678250426,
+											"parameters": {
+												"instance-variable": "shotSpread",
+												"comparison": 0,
+												"value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "PlayerShip",
+											"sid": 166779310524541,
+											"parameters": {
+												"instance-variable": "shotSpread",
+												"value": "20"
+											}
+										}
+									],
+									"sid": 349699256690804
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 583279850548248
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "PlayerShip",
+											"sid": 215028595399295,
+											"parameters": {
+												"instance-variable": "shotSpread",
+												"value": "0"
+											}
+										}
+									],
+									"sid": 717373725834697
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerShip",
+									"sid": 190641934796757,
+									"parameters": {
+										"instance-variable": "shipType",
+										"comparison": 0,
+										"value": "EAGLE"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 446905358986775
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerShip",
+									"sid": 157085959027903,
+									"parameters": {
+										"instance-variable": "shipType",
+										"comparison": 0,
+										"value": "SPARROW"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 585808440661735
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerShip",
+									"sid": 378685644752047,
+									"parameters": {
+										"instance-variable": "shipType",
+										"comparison": 0,
+										"value": "OWL"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 617307107871637
+						}
+					]
+				}
+			],
+			"sid": 597526443392457
 		}
 	],
 	"sid": 111151355255525

@@ -1,0 +1,46 @@
+{
+	"name": "Constants",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "FALCON",
+			"type": "string",
+			"initialValue": "Falcon",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 509815425371506
+		},
+		{
+			"eventType": "variable",
+			"name": "OWL",
+			"type": "string",
+			"initialValue": "Owl",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 153372847507420
+		},
+		{
+			"eventType": "variable",
+			"name": "SPARROW",
+			"type": "string",
+			"initialValue": "Sparrow",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 714354955679674
+		},
+		{
+			"eventType": "variable",
+			"name": "EAGLE",
+			"type": "string",
+			"initialValue": "Eagle",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 783349945739932
+		}
+	],
+	"sid": 646663854379242
+}
