@@ -1,0 +1,697 @@
+{
+	"name": "Control Input Events",
+	"events": [
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Main Gameplay Gamepad Controls",
+			"description": "Gamepad 0 controls Player 1; Gamepad 1 controls Player 2.",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 838089259709760,
+							"parameters": {
+								"name": "\"Player Loop\"",
+								"start-index": "1",
+								"end-index": "2"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "PlayerController",
+							"sid": 860185897411874,
+							"parameters": {
+								"instance-variable": "playerNumber",
+								"comparison": 0,
+								"value": "loopindex"
+							}
+						},
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "PlayerShip",
+							"sid": 391614175461159,
+							"parameters": {
+								"unique-id": "PlayerController.uidControlledShip"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 461513176542398,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "UP"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-axis",
+									"objectClass": "Gamepad",
+									"sid": 358107449902286,
+									"parameters": {
+										"gamepad": "loopindex - 1",
+										"axis": "left-analog-y-axis",
+										"comparison": 2,
+										"value": "0"
+									}
+								},
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 768068086921909,
+									"parameters": {
+										"gamepad": "loopindex - 1",
+										"button": "d-pad-up"
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 775590324814352,
+									"parameters": {
+										"key": 38
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "PlayerShip",
+									"sid": 846097513297416,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "up"
+									}
+								}
+							],
+							"sid": 590981226469950,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "comment",
+							"text": "DOWN"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-axis",
+									"objectClass": "Gamepad",
+									"sid": 902921458518401,
+									"parameters": {
+										"gamepad": "loopindex - 1",
+										"axis": "left-analog-y-axis",
+										"comparison": 4,
+										"value": "0"
+									}
+								},
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 997074308463066,
+									"parameters": {
+										"gamepad": "loopindex - 1",
+										"button": "d-pad-down"
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 628579530901604,
+									"parameters": {
+										"key": 40
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "PlayerShip",
+									"sid": 975917963775984,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "down"
+									}
+								}
+							],
+							"sid": 465616805098460,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "comment",
+							"text": "LEFT"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-axis",
+									"objectClass": "Gamepad",
+									"sid": 340277824889920,
+									"parameters": {
+										"gamepad": "loopindex - 1",
+										"axis": "left-analog-x-axis",
+										"comparison": 2,
+										"value": "0"
+									}
+								},
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 628656378359856,
+									"parameters": {
+										"gamepad": "loopindex - 1",
+										"button": "d-pad-left"
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 921261278549333,
+									"parameters": {
+										"key": 37
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "PlayerShip",
+									"sid": 829742760055762,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "left"
+									}
+								}
+							],
+							"sid": 391330607205515,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "comment",
+							"text": "RIGHT"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-axis",
+									"objectClass": "Gamepad",
+									"sid": 713628868464373,
+									"parameters": {
+										"gamepad": "loopindex - 1",
+										"axis": "left-analog-x-axis",
+										"comparison": 4,
+										"value": "0"
+									}
+								},
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 717512914438986,
+									"parameters": {
+										"gamepad": "loopindex - 1",
+										"button": "d-pad-right"
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 649516761511160,
+									"parameters": {
+										"key": 39
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "PlayerShip",
+									"sid": 584694856373454,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "right"
+									}
+								}
+							],
+							"sid": 823765229124681,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "comment",
+							"text": "ABILITY 1"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 319460413713633,
+									"parameters": {
+										"gamepad": "loopindex - 1",
+										"button": "button-a"
+									}
+								},
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 436094193938657,
+									"parameters": {
+										"gamepad": "loopindex - 1",
+										"button": "button-y"
+									}
+								},
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 379197769747356,
+									"parameters": {
+										"gamepad": "loopindex - 1",
+										"button": "right-shoulder-button"
+									}
+								},
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 806229586360081,
+									"parameters": {
+										"gamepad": "loopindex - 1",
+										"button": "right-shoulder-trigger"
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 896871599144874,
+									"parameters": {
+										"key": 32
+									}
+								}
+							],
+							"actions": [],
+							"sid": 896987102375738,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "comment",
+							"text": "ABILITY 2"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 303960050193454,
+									"parameters": {
+										"gamepad": "loopindex - 1",
+										"button": "button-x"
+									}
+								},
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 880537142469006,
+									"parameters": {
+										"gamepad": "loopindex - 1",
+										"button": "button-b"
+									}
+								},
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 170167081190712,
+									"parameters": {
+										"gamepad": "loopindex - 1",
+										"button": "left-shoulder-button"
+									}
+								},
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 911537631176390,
+									"parameters": {
+										"gamepad": "loopindex - 1",
+										"button": "left-shoulder-trigger"
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 692992990683745,
+									"parameters": {
+										"key": 17
+									}
+								}
+							],
+							"actions": [],
+							"sid": 953243205580099,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "comment",
+							"text": "MENU / START"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 158071373617878,
+									"parameters": {
+										"gamepad": "loopindex - 1",
+										"button": "start-menu"
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 461259074532233,
+									"parameters": {
+										"key": 13
+									}
+								}
+							],
+							"actions": [],
+							"sid": 997648873789114,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "comment",
+							"text": "BACK / ESCAPE"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 599108630956162,
+									"parameters": {
+										"gamepad": "0",
+										"button": "back-view"
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 382546995558941,
+									"parameters": {
+										"key": 27
+									}
+								}
+							],
+							"actions": [],
+							"sid": 352458696370214,
+							"isOrBlock": true
+						}
+					]
+				}
+			],
+			"sid": 666426936119831
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Main Gameplay Keyboard Controls",
+			"description": "Only used for Player 1.",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "UP"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 149721759453803,
+							"parameters": {
+								"key": 38
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "PlayerController",
+							"sid": 465894187028765,
+							"parameters": {
+								"instance-variable": "playerNumber",
+								"comparison": 0,
+								"value": "1"
+							}
+						},
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "PlayerShip",
+							"sid": 717555168951125,
+							"parameters": {
+								"unique-id": "PlayerController.uidControlledShip"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "PlayerShip",
+							"sid": 867358628759396,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "up"
+							}
+						}
+					],
+					"sid": 224322362640135
+				},
+				{
+					"eventType": "comment",
+					"text": "DOWN"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 665446581242763,
+							"parameters": {
+								"key": 40
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "PlayerController",
+							"sid": 721414279930116,
+							"parameters": {
+								"instance-variable": "playerNumber",
+								"comparison": 0,
+								"value": "1"
+							}
+						},
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "PlayerShip",
+							"sid": 334236035628357,
+							"parameters": {
+								"unique-id": "PlayerController.uidControlledShip"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "PlayerShip",
+							"sid": 554562280032366,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "down"
+							}
+						}
+					],
+					"sid": 997900797313031
+				},
+				{
+					"eventType": "comment",
+					"text": "LEFT"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 536379193083948,
+							"parameters": {
+								"key": 37
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "PlayerController",
+							"sid": 689853879917139,
+							"parameters": {
+								"instance-variable": "playerNumber",
+								"comparison": 0,
+								"value": "1"
+							}
+						},
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "PlayerShip",
+							"sid": 203776458373896,
+							"parameters": {
+								"unique-id": "PlayerController.uidControlledShip"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "PlayerShip",
+							"sid": 421293966317458,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "left"
+							}
+						}
+					],
+					"sid": 681122347351838
+				},
+				{
+					"eventType": "comment",
+					"text": "RIGHT"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 197823381040201,
+							"parameters": {
+								"key": 39
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "PlayerController",
+							"sid": 974665552096200,
+							"parameters": {
+								"instance-variable": "playerNumber",
+								"comparison": 0,
+								"value": "1"
+							}
+						},
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "PlayerShip",
+							"sid": 959616390005102,
+							"parameters": {
+								"unique-id": "PlayerController.uidControlledShip"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "PlayerShip",
+							"sid": 775493323593787,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "right"
+							}
+						}
+					],
+					"sid": 253991644484308
+				},
+				{
+					"eventType": "comment",
+					"text": "ABILITY 1"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 883926616119520,
+							"parameters": {
+								"key": 32
+							}
+						}
+					],
+					"actions": [],
+					"sid": 778172200986611
+				},
+				{
+					"eventType": "comment",
+					"text": "ABILITY 2"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 817001211076250,
+							"parameters": {
+								"key": 17
+							}
+						}
+					],
+					"actions": [],
+					"sid": 640820213881173
+				},
+				{
+					"eventType": "comment",
+					"text": "MENU / START"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 270552400811443,
+							"parameters": {
+								"key": 13
+							}
+						}
+					],
+					"actions": [],
+					"sid": 756359168040083
+				},
+				{
+					"eventType": "comment",
+					"text": "BACK / ESCAPE"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 174900289668580,
+							"parameters": {
+								"key": 27
+							}
+						}
+					],
+					"actions": [],
+					"sid": 114953719965590
+				}
+			],
+			"sid": 781623195644923
+		}
+	],
+	"sid": 506524610107088
+}

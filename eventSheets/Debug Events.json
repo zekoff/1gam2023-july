@@ -105,55 +105,177 @@
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "on-tap-object",
-					"objectClass": "Touch",
-					"sid": 505795127569293,
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 900475096264630,
 					"parameters": {
-						"object": "PlayerShip"
+						"key": 66
 					}
 				}
 			],
 			"actions": [
 				{
-					"callFunction": "AddDebugMessage",
-					"sid": 868889270773435,
-					"parameters": [
-						"\"Associated peer ID: \" & PlayerShip.peerId"
-					]
-				},
-				{
-					"callFunction": "AddDebugMessage",
-					"sid": 688118709750958,
-					"parameters": [
-						"\"UID of this ship: \" & PlayerShip.UID"
-					]
+					"id": "add-to-instvar",
+					"objectClass": "PlayerShip",
+					"sid": 877069443876206,
+					"parameters": {
+						"instance-variable": "shotsPerBurst",
+						"value": "1"
+					}
 				}
 			],
-			"sid": 604496663355639
+			"sid": 668496068981095
 		},
 		{
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "on-tap-object",
-					"objectClass": "Touch",
-					"sid": 298851529272583,
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 896789212788790,
 					"parameters": {
-						"object": "MultiplayerButton"
+						"key": 83
 					}
 				}
 			],
 			"actions": [
 				{
-					"id": "signal",
-					"objectClass": "System",
-					"sid": 906484518991787,
+					"id": "add-to-instvar",
+					"objectClass": "PlayerShip",
+					"sid": 178868206388043,
 					"parameters": {
-						"tag": "\"start-multiplayer\""
+						"instance-variable": "shotSpread",
+						"value": "2"
 					}
 				}
 			],
-			"sid": 642804882184391
+			"sid": 628580160002017
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 923262690257547,
+					"parameters": {
+						"key": 67
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "subtract-from-instvar",
+					"objectClass": "PlayerShip",
+					"sid": 338677107899034,
+					"parameters": {
+						"instance-variable": "shotCooldown",
+						"value": "0.03"
+					}
+				}
+			],
+			"sid": 599077001028657,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "PlayerShip",
+							"sid": 124619853184414,
+							"parameters": {
+								"instance-variable": "shotCooldown",
+								"comparison": 3,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "PlayerShip",
+							"sid": 110232400233515,
+							"parameters": {
+								"instance-variable": "shotCooldown",
+								"value": ".01"
+							}
+						}
+					],
+					"sid": 722678479087811
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 915128552197345,
+					"parameters": {
+						"key": 84
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 450285845634631,
+					"parameters": {
+						"object": "PlayerShip",
+						"time-scale": "1.0"
+					}
+				}
+			],
+			"sid": 489145958956961,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "evaluate-expression",
+							"objectClass": "System",
+							"sid": 729109146374107,
+							"parameters": {
+								"value": "timescale < 1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-time-scale",
+							"objectClass": "System",
+							"sid": 573657487480339,
+							"parameters": {
+								"time-scale": "1"
+							}
+						}
+					],
+					"sid": 618126402354022
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 301315420805459
+						}
+					],
+					"actions": [
+						{
+							"id": "set-time-scale",
+							"objectClass": "System",
+							"sid": 809698129668706,
+							"parameters": {
+								"time-scale": "0.1"
+							}
+						}
+					],
+					"sid": 929491524481531
+				}
+			]
 		}
 	],
 	"sid": 367206822859468

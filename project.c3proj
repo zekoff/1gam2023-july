@@ -22,13 +22,6 @@
 		},
 		{
 			"type": "plugin",
-			"id": "Multiplayer",
-			"name": "Multiplayer",
-			"author": "Scirra",
-			"bundled": false
-		},
-		{
-			"type": "plugin",
 			"id": "Particles",
 			"name": "Particles",
 			"author": "Scirra",
@@ -78,6 +71,13 @@
 		},
 		{
 			"type": "behavior",
+			"id": "Flash",
+			"name": "Flash",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "Rotate",
 			"name": "Rotate",
 			"author": "Scirra",
@@ -95,14 +95,13 @@
 	"objectTypes": {
 		"items": [
 			"PlayerShip",
-			"Multiplayer",
 			"PlayerStandardBullet",
 			"PlayerHomingBullet",
 			"EnemyShip",
 			"EnemyStandardBullet",
 			"EnemyHomingBullet",
 			"ExplosionParticle",
-			"MultiplayerButton"
+			"PlayerController"
 		],
 		"subfolders": [
 			{
@@ -146,8 +145,7 @@
 	"eventSheets": {
 		"items": [
 			"Main Gameplay Events",
-			"Controller Input Events",
-			"Multiplayer Startup Events",
+			"Control Input Events",
 			"Debug Events",
 			"Test Layout Events"
 		],

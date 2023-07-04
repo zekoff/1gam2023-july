@@ -1,0 +1,66 @@
+{
+	"name": "PlayerController",
+	"plugin-id": "Sprite",
+	"sid": 338232288998025,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "score",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 757154330147158
+		},
+		{
+			"name": "upgradeLevel",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 628534142318149
+		},
+		{
+			"name": "uidControlledShip",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 113827262811536
+		},
+		{
+			"name": "playerNumber",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 378667369278222
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 250,
+						"height": 250,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 5746252,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 114939118033897,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

@@ -18,6 +18,7 @@
 					"uid": 11,
 					"instanceVariables": {
 						"health": 5,
+						"invulnerabilityTimeAfterHit": 2,
 						"shotsPerBurst": 3,
 						"shotSpread": 0,
 						"shotCooldown": 0.2,
@@ -29,6 +30,9 @@
 						"inputBits": 0
 					},
 					"behaviors": {
+						"Flash": {
+							"properties": {}
+						},
 						"8Direction": {
 							"properties": {
 								"max-speed": 300,
@@ -84,6 +88,10 @@
 												"state": true
 											},
 											{
+												"iv": "invulnerabilityTimeAfterHit",
+												"state": true
+											},
+											{
 												"iv": "shotsPerBurst",
 												"state": true
 											},
@@ -126,6 +134,10 @@
 							{
 								"id": "behavior",
 								"component": [
+									{
+										"key": "Flash",
+										"state": []
+									},
 									{
 										"key": "8Direction",
 										"state": [
@@ -445,6 +457,40 @@
 							1
 						],
 						"angle": 1.5707963267948966,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "PlayerController",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 20,
+					"instanceVariables": {
+						"score": 0,
+						"upgradeLevel": 0,
+						"uidControlledShip": 11,
+						"playerNumber": 1
+					},
+					"behaviors": {},
+					"world": {
+						"x": 133,
+						"y": 610,
+						"width": 128.86038956948718,
+						"height": 128.86038956948718,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
 						"zElevation": 0
 					}
 				}

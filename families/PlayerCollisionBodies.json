@@ -9,9 +9,22 @@
 			"desc": "",
 			"show": true,
 			"sid": 252178333415483
+		},
+		{
+			"name": "invulnerabilityTimeAfterHit",
+			"type": "number",
+			"desc": "Time the collided object is invulnerable after taking a hit.",
+			"show": true,
+			"sid": 342296547783104
 		}
 	],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Flash",
+			"name": "Flash",
+			"sid": 758236177364643
+		}
+	],
 	"effectTypes": [],
 	"members": [
 		"PlayerShip"
