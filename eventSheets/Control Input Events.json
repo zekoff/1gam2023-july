@@ -368,24 +368,12 @@
 			"isActiveOnStart": true,
 			"children": [
 				{
-					"eventType": "comment",
-					"text": "UP"
-				},
-				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 149721759453803,
-							"parameters": {
-								"key": 38
-							}
-						},
-						{
 							"id": "compare-instance-variable",
 							"objectClass": "PlayerController",
-							"sid": 465894187028765,
+							"sid": 104119916954117,
 							"parameters": {
 								"instance-variable": "playerNumber",
 								"comparison": 0,
@@ -395,319 +383,214 @@
 						{
 							"id": "pick-by-unique-id",
 							"objectClass": "PlayerShip",
-							"sid": 717555168951125,
-							"parameters": {
-								"unique-id": "PlayerController.uidControlledShip"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "simulate-control",
-							"objectClass": "PlayerShip",
-							"sid": 867358628759396,
-							"behaviorType": "8Direction",
-							"parameters": {
-								"control": "up"
-							}
-						}
-					],
-					"sid": 224322362640135
-				},
-				{
-					"eventType": "comment",
-					"text": "DOWN"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 665446581242763,
-							"parameters": {
-								"key": 40
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "PlayerController",
-							"sid": 721414279930116,
-							"parameters": {
-								"instance-variable": "playerNumber",
-								"comparison": 0,
-								"value": "1"
-							}
-						},
-						{
-							"id": "pick-by-unique-id",
-							"objectClass": "PlayerShip",
-							"sid": 334236035628357,
-							"parameters": {
-								"unique-id": "PlayerController.uidControlledShip"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "simulate-control",
-							"objectClass": "PlayerShip",
-							"sid": 554562280032366,
-							"behaviorType": "8Direction",
-							"parameters": {
-								"control": "down"
-							}
-						}
-					],
-					"sid": 997900797313031
-				},
-				{
-					"eventType": "comment",
-					"text": "LEFT"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 536379193083948,
-							"parameters": {
-								"key": 37
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "PlayerController",
-							"sid": 689853879917139,
-							"parameters": {
-								"instance-variable": "playerNumber",
-								"comparison": 0,
-								"value": "1"
-							}
-						},
-						{
-							"id": "pick-by-unique-id",
-							"objectClass": "PlayerShip",
-							"sid": 203776458373896,
-							"parameters": {
-								"unique-id": "PlayerController.uidControlledShip"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "simulate-control",
-							"objectClass": "PlayerShip",
-							"sid": 421293966317458,
-							"behaviorType": "8Direction",
-							"parameters": {
-								"control": "left"
-							}
-						}
-					],
-					"sid": 681122347351838
-				},
-				{
-					"eventType": "comment",
-					"text": "RIGHT"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 197823381040201,
-							"parameters": {
-								"key": 39
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "PlayerController",
-							"sid": 974665552096200,
-							"parameters": {
-								"instance-variable": "playerNumber",
-								"comparison": 0,
-								"value": "1"
-							}
-						},
-						{
-							"id": "pick-by-unique-id",
-							"objectClass": "PlayerShip",
-							"sid": 959616390005102,
-							"parameters": {
-								"unique-id": "PlayerController.uidControlledShip"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "simulate-control",
-							"objectClass": "PlayerShip",
-							"sid": 775493323593787,
-							"behaviorType": "8Direction",
-							"parameters": {
-								"control": "right"
-							}
-						}
-					],
-					"sid": 253991644484308
-				},
-				{
-					"eventType": "comment",
-					"text": "ABILITY 1"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-key-pressed",
-							"objectClass": "Keyboard",
-							"sid": 318037447298621,
-							"parameters": {
-								"key": 32
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "PlayerController",
-							"sid": 210386925501404,
-							"parameters": {
-								"instance-variable": "playerNumber",
-								"comparison": 0,
-								"value": "1"
-							}
-						},
-						{
-							"id": "pick-by-unique-id",
-							"objectClass": "PlayerShip",
-							"sid": 326785243513374,
-							"parameters": {
-								"unique-id": "PlayerController.uidControlledShip"
-							}
-						}
-					],
-					"actions": [
-						{
-							"customAction": "Ability1",
-							"objectClass": "PlayerShip",
-							"sid": 745512841630203
-						}
-					],
-					"sid": 778172200986611
-				},
-				{
-					"eventType": "comment",
-					"text": "ABILITY 2"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-key-pressed",
-							"objectClass": "Keyboard",
-							"sid": 709185648355665,
-							"parameters": {
-								"key": 17
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "PlayerController",
-							"sid": 622800251917048,
-							"parameters": {
-								"instance-variable": "playerNumber",
-								"comparison": 0,
-								"value": "1"
-							}
-						},
-						{
-							"id": "pick-by-unique-id",
-							"objectClass": "PlayerShip",
-							"sid": 491268615321434,
+							"sid": 244878630804150,
 							"parameters": {
 								"unique-id": "PlayerController.uidControlledShip"
 							}
 						}
 					],
 					"actions": [],
-					"sid": 640820213881173
-				},
-				{
-					"eventType": "comment",
-					"text": "MENU / START"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
+					"sid": 950245094649244,
+					"children": [
 						{
-							"id": "on-key-pressed",
-							"objectClass": "Keyboard",
-							"sid": 384251758492894,
-							"parameters": {
-								"key": 13
-							}
+							"eventType": "comment",
+							"text": "UP"
 						},
 						{
-							"id": "compare-instance-variable",
-							"objectClass": "PlayerController",
-							"sid": 455478940812477,
-							"parameters": {
-								"instance-variable": "playerNumber",
-								"comparison": 0,
-								"value": "1"
-							}
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 157420543333280,
+									"parameters": {
+										"key": 38
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "PlayerShip",
+									"sid": 819697194254676,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "up"
+									}
+								}
+							],
+							"sid": 868708177680264
 						},
 						{
-							"id": "pick-by-unique-id",
-							"objectClass": "PlayerShip",
-							"sid": 985854744720855,
-							"parameters": {
-								"unique-id": "PlayerController.uidControlledShip"
-							}
+							"eventType": "comment",
+							"text": "DOWN"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 739628161716074,
+									"parameters": {
+										"key": 40
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "PlayerShip",
+									"sid": 201894080447908,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "down"
+									}
+								}
+							],
+							"sid": 867088014113838
+						},
+						{
+							"eventType": "comment",
+							"text": "LEFT"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 492863080020798,
+									"parameters": {
+										"key": 37
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "PlayerShip",
+									"sid": 137651168091652,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "left"
+									}
+								}
+							],
+							"sid": 140934889630718
+						},
+						{
+							"eventType": "comment",
+							"text": "RIGHT"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 448924124332920,
+									"parameters": {
+										"key": 39
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "PlayerShip",
+									"sid": 867918585648862,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "right"
+									}
+								}
+							],
+							"sid": 100992436306149
+						},
+						{
+							"eventType": "comment",
+							"text": "ABILITY 1"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 916220973030097,
+									"parameters": {
+										"key": 32
+									}
+								}
+							],
+							"actions": [
+								{
+									"customAction": "Ability1",
+									"objectClass": "PlayerShip",
+									"sid": 519393700354629
+								}
+							],
+							"sid": 557148188227216
+						},
+						{
+							"eventType": "comment",
+							"text": "ABILITY 2"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 633625113915327,
+									"parameters": {
+										"key": 17
+									}
+								}
+							],
+							"actions": [],
+							"sid": 611290714337243
+						},
+						{
+							"eventType": "comment",
+							"text": "MENU / START"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 547952942338441,
+									"parameters": {
+										"key": 13
+									}
+								}
+							],
+							"actions": [],
+							"sid": 879344494367991
+						},
+						{
+							"eventType": "comment",
+							"text": "BACK / ESCAPE"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 296228578418965,
+									"parameters": {
+										"key": 27
+									}
+								}
+							],
+							"actions": [],
+							"sid": 484650608233182
 						}
-					],
-					"actions": [],
-					"sid": 756359168040083
-				},
-				{
-					"eventType": "comment",
-					"text": "BACK / ESCAPE"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-key-pressed",
-							"objectClass": "Keyboard",
-							"sid": 508155847230182,
-							"parameters": {
-								"key": 27
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "PlayerController",
-							"sid": 653585357366864,
-							"parameters": {
-								"instance-variable": "playerNumber",
-								"comparison": 0,
-								"value": "1"
-							}
-						},
-						{
-							"id": "pick-by-unique-id",
-							"objectClass": "PlayerShip",
-							"sid": 730611319980448,
-							"parameters": {
-								"unique-id": "PlayerController.uidControlledShip"
-							}
-						}
-					],
-					"actions": [],
-					"sid": 114953719965590
+					]
 				}
 			],
 			"sid": 781623195644923
